@@ -56,7 +56,7 @@ class m3u8ToMp4Converter {
         .outputOptions("-bsf:a aac_adtstoasc")
         .output(this.OUTPUT_FILE)
         .on('progress', function(progress) {
-          console.log('Processing: ' + progress.percent + '% done');
+          console.log(`Processing: ${this.OUTPUT_FILE} ${progress.percent}% done from ${this.M3U8_FILE}`);
         })
         .run();
     });
