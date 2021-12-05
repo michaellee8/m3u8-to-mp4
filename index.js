@@ -44,7 +44,8 @@ class m3u8ToMp4Converter {
         reject(new Error("You must specify the input and the output files"));
         return;
       }
-
+      const m3u8File = this.M3U8_FILE;
+      const outputFile = this.OUTPUT_FILE;
       ffmpeg(this.M3U8_FILE)
         .on("error", error => {
           reject(new Error(error));
@@ -56,7 +57,7 @@ class m3u8ToMp4Converter {
         .outputOptions("-bsf:a aac_adtstoasc")
         .output(this.OUTPUT_FILE)
         .on('progress', function(progress) {
-          console.log(`Processing: ${this.OUTPUT_FILE} ${progress.percent}% done from ${this.M3U8_FILE}`);
+          console.log(`Processing: ${outputFile} ${progress.percent}% done from ${m3u8File}`);
         })
         .run();
     });
