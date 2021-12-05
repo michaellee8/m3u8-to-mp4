@@ -55,6 +55,9 @@ class m3u8ToMp4Converter {
         .outputOptions("-c copy")
         .outputOptions("-bsf:a aac_adtstoasc")
         .output(this.OUTPUT_FILE)
+        .on('progress', function(progress) {
+          console.log('Processing: ' + progress.percent + '% done');
+        })
         .run();
     });
   }
